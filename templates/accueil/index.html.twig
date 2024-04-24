@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | LocaBoat{% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center">
+    <div class="boiteAccueil">
+        <h1 class="titreAccueil">Location de bateaux </h1>
+    </div>
+    <img src="{{ asset('assets/img/bateau.png') }}" alt="Bateau en mer" class="imgBateau">
+    
+</div>
+
+<div class="d-flex justify-content-center">
+    <img src="{{ asset('assets/img/btAccueil.jpg') }}" alt="Bateau en mer" class="imgBtAccueil">
+    <div class="divAccueil">
+        <h5 class="titreQuestionA">Envie d'une balade en mer ? </h5>
+        <h5 class="titreRepA">Louer un bateau !</h5>
+        <p class="paraAccueil"> Êtes-vous prêt à vivre une expérience maritime inoubliable ? <br>
+        Embarquez avec nous chez LocaBoat, où chaque voyage <br> devient une aventure mémorable. </p>
+
+        <a href="/location" class="btnLouerA"> LOUER </a>
+    </div>
+    
+</div>
+
+
+{% endblock %}

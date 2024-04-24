@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mon Compte | LocaBoat{% endblock %}
+
+{% block content %}
+
+    <div class="divMonCompte">
+        <div class="MesInfos">
+
+            <a href="#" class="linkInfos">Mon Compte</a> <br>
+            <a href="#" class="linkInfos2">Mes Locations</a>
+        </div>
+
+
+        <div class="divMesLocs">
+
+            <h5 class="titreMesLocs"> Mes locations </h5>
+
+            
+            {% if lesLocationsByUtilisateur|length == 0 %}
+
+                <p> Aucune réservation effectuer </p>
+                
+            {% else %}
+                
+
+                <table class="tableauLoc">
+
+                    <tr class="enteteTableau">
+                        <td class="tdStyle"> Bateau</td>
+                        <td class="tdStyle"> Début de location</td>
+                        <td class="tdStyle"> Fin de location</td>
+                        <td> Total</td>
+                    </tr>
+
+                    {% for uneL in lesLocationsByUtilisateur %}
+
+                        <tr class="vlrTableau">
+                            <td class="tdStyle"> {{ uneL.idBateau.nom }} </td>
+                            <td class="tdStyle"> {{ uneL.debutLocation|date('d-m-Y') }} </td>
+                            <td class="tdStyle"> {{ uneL.finLocation|date('d-m-Y') }} </td>
+                            {% set differenceJours = uneL.finLocation|date('U') - uneL.debutLocation|date('U') %}
+                                
+                            {# Converti la différence en nombre de jours entiers #}
+                            {% set differenceJoursEntiers = differenceJours / (24 * 3600) %}
+                                
+                            {# Calculer le montant total en multipliant le nombre de jours par le prix par jour + 1  #}
+                            <td class="tdStyle">    {{ (differenceJoursEntiers + 1) * uneL.idBateau.prixJour }} € </td>
+                        </tr>
+
+                    {% endfor %}
+
+                </table>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Location | LocaBoat{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+
+    <div class="input-group divLocation">
+        <label for="recherche" class="input-group-text lblB"> <i class="fas fa-map-marker-alt iconBateau"></i> </label>
+        <input type="search" class="form-control iptLocation" name="recherche" id="recherche" placeholder="Rechercher"/>
+        <ul id="listeDestination" class="suggestions-liste"></ul> 
+    </div>
+
+    <div class="input-group divLocation">
+        <label for="dateLoc" class="input-group-text lblB">
+            <i class="fas fa-solid fa-calendar iconBateau"></i>
+        </label>
+        <input type="text" class="form-control iptLocation" name="dateLoc" id="dateLoc" data-bs-toggle="modal" data-bs-target="#afficherModal" placeholder="Choisir vos dates" readonly/>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="afficherModal" tabindex="-1" role="dialog" aria-labelledby="afficherModalDate" data-bs-backdrop="false" aria-hidden="true">
+    <div class="modal-dialog d1" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            
+            <h5 class="modal-title" id="afficherModalDate"> {{ moisAnnee }} </h5>
+            <h5 class="modal-title moisSuivant" id="afficherModalDate"> {{ moisAnneeSuivant }} </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">    
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="divGCal">
+                <div class="divCalendrier">
+                    <table class="calendrier">
+                        <tr>
+                            {% for unJ in joursSem %}
+                                <td class="lblJourSemaine">
+                                    {{ unJ }}
+                                </td>
+                            {% endfor %}
+                        </tr>
+
+                        {% for i in 0..nbSemaines %}
+                            <tr>
+                                {% for key, unJ in joursSem %}
+                                    {% set currentDay = premierJour|date_modify('+' ~ (key + (i * 7) - (premierJour|date('N') - 1)) ~ ' days') %}
+                                    
+                                    {% set cssClass = (currentDay|date('U') < "now"|date('U') and currentDay|date('d-m') != "now"|date('d-m')) ? 'avant-aujourd-hui' : '' %}
+                                    <td class="lblJour selectableDay {{ cssClass }}" data-jour="{{ currentDay|date('d-m-Y') }}" >
+                                        {% if i == 0 and key + 1 < premierJour|date('N') %}
+                                            &nbsp;
+                                        {% else %}
+                                            {{ currentDay|date('d') }} 
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+
+                <div class="divCalendrier2">
+                    <table class="calendrier">
+                        <tr>
+                            {% for unJ in joursSem %}
+                                <td class="lblJourSemaine">
+                                    {{ unJ }}
+                                </td>
+                            {% endfor %}
+                        </tr>
+
+                        {% for i in 0..nbSemaines %}
+                            <tr>
+                                {% for key, unJ in joursSem %}
+                                    {% set currentDay = premierJourSuivant|date_modify('+' ~ (key + (i * 7)) ~ ' days') %}
+                                    
+                                    <td class="lblJour " data-jour="{{ currentDay|date('d-m-Y') }}">
+                                        {{ currentDay|date('d') }}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btnReinitialiser">Réinitialiser</button>
+                <button type="button" class="btn btnEnregistrer">Enregistrer</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    
+
+    <div class="input-group divLocaBat">
+        <label for="batmoteur" class="input-group-text lblB"> 
+            <a href="#"> <i class="fas fa-solid fa-ship iconBateau" onclick="afficheBateauxByCateg('Moteur')"></i> </a>
+        </label>
+    </div>
+
+    <div class="input-group divLocaBat">
+        <label for="voilier" class="input-group-text lblB"> 
+            <a href="#"> <i class="fas fa-solid fa-sailboat iconBateau" onclick="afficheBateauxByCateg('Voile')"></i> </a>
+        </label>
+    </div>
+</div>
+
+<div class="divDropdown">
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Type de bateau
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" data-value="Tous"> Tous </a></li>
+            <li><a class="dropdown-item" href="#" data-value="Voilier"> Voilier </a></li>
+            <li><a class="dropdown-item" href="#" data-value="Catamaran"> Catamaran </a></li>
+            <li><a class="dropdown-item" href="#" data-value="Bateau à moteur"> Bateau à moteur </a></li>
+            <li><a class="dropdown-item" href="#" data-value="Semi-rigide"> Semi-rigide </a></li>
+            <li><a class="dropdown-item" href="#" data-value="Yacht"> Yacht </a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown scdDropdown" id="prixDropdown">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Prix
+        </button>
+
+        <ul class="dropdown-menu dropdownPrix">
+            <li class="lblPrixJour">Prix par jour</li>
+            
+            <li> 
+                <div class="barre" id="barre">
+                    <div class="progressionBarre" id="progressionBarre"></div>
+                    <div class="blocGauche" id="blocGauche"></div>
+                    <div class="blocDroite" id="blocDroite"></div>
+
+                    <div class="curseur curseurDebut" id="curseurDebut"></div>
+                    <div class="curseur curseurFin" id="curseurFin"></div>
+
+                </div>
+
+
+                <div class="divPrix">
+                    <p class="lblMinP">0€</p>
+                    <p class="lblMaxP">1000€ </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+<div class="container divProd">
+    {# affiche les bateaux #}
+</div>
+
+
+
+
+
+
+<script src="{{ asset('assets/js/curseurPrix.js') }}"></script>
+<script src="{{ asset('assets/js/calendrierPageProd.js') }}"></script>
+<script src="{{ asset('assets/js/produits.js') }}"></script>
+<script src="{{ asset('assets/js/recherche.js') }}"></script>
+
+{% endblock %}

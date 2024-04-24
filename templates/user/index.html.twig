@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion | LocaBoat{% endblock %}
+
+{% block content %}
+
+<div class="container">
+        <h2 class="titreContact"> Connexion </h2>
+
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form method="post">
+            <div class="input-group divMail">    
+                <label for="mail" class="input-group-text lblConnexion">
+                    <i class="fas fa-light fa-envelope iconConnexion"></i>
+                </label>
+                <input type="text" name="_username" id="mail" class="form-control inputConnexion" placeholder="Adresse mail" required value="{{ last_username }}" />
+            </div>
+
+            <div class="input-group divMdp">
+                <label for="mdp" class="input-group-text lblConnexion">
+                    <i class="fas fa-light fa-lock iconConnexion"></i>
+                </label>
+                <input type="password" name="_password" id="mdp" class="form-control inputConnexion" placeholder="Mot de passe" required />
+            </div>
+
+    <div class="divNvlInscription">
+        <p class="pNvlInscription"> Vous n'avez pas encore de compte ?  </p>
+        <a href="#" class="linkInscription">Inscrivez-vous </a>
+    </div>
+
+    <div class="divBtnConnexion">
+                <button class="btnSeConnecter"> Se connecter </button>
+            </div>
+        </form>
+    
+</div>
+{% endblock %}

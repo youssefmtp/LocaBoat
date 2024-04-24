@@ -1,0 +1,804 @@
+/*
+* Déclaration des variables
+*/
+:root {
+    --principal: #024E65;
+    --bleu-secondaire: #429FBB;
+}
+
+/** Navbar */
+.imgLogo{
+    width: 100px;
+}
+
+.collapse ul {
+    justify-content: center;
+}
+.navbar-custom{
+    background-color: #024E65;
+}
+
+.navbar-custom .linkG {
+    color: white !important;
+}
+
+.btnConnexion {
+    background-color: white;
+    border-top-left-radius: 150px 150px;
+	border-top-right-radius: 150px 150px;
+	border-bottom-right-radius: 150px 150px;
+	border-bottom-left-radius: 150px 150px;
+    color: #024E65 !important;
+    width: 150px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.btnCompte {
+    background-color: white;
+    border-top-left-radius: 150px 150px;
+	border-top-right-radius: 150px 150px;
+	border-bottom-right-radius: 150px 150px;
+	border-bottom-left-radius: 150px 150px;
+    color: #024E65 !important;
+    width: 150px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    margin-right: 5px;
+}
+.iconU{
+    margin-right: 8px;
+}
+
+/** Footer */
+
+.pFooter{
+    color: white;
+}
+
+/** Accueil */
+
+.imgBateau{
+    width: 100%;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+}
+
+.boiteAccueil{
+    padding: 40px 50px 200px 50px;
+    margin-left: 45%;
+    margin-top: 10%;
+    background-color: #c1ecf2;
+    border-radius: 0.5rem;
+    z-index: 2;
+    position: absolute;
+}
+
+.titreAccueil{
+    color: #024E65;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.imgBtAccueil{
+    width: 1050px;
+    margin-top: 5%;
+    position: relative;
+    z-index: 1;
+    border-radius: 0.5rem;
+}
+
+.divAccueil{
+    margin-top: 350px;
+    margin-right: 700px;
+    padding: 10px 20px 50px 20px;
+    background-color: #ffffff;
+    border: #dddddd solid 2px;
+    border-radius: 0.2rem;
+    z-index: 2;
+    position: absolute;
+}
+
+.titreQuestionA{
+    color: #07474f;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.titreRepA{
+    color: #258b75;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.btnLouerA{
+    background-color: #258b75;
+    padding: 10px 20px 10px 20px;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    margin-left: 10px;
+    color: white;
+}
+
+.btnLouerA:hover{
+    color: #dddddd;
+    text-decoration: none;
+}
+
+.paraAccueil{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/** Location */
+.iconBateau{
+    color: #024E65;
+    font-size: 20px;
+}
+
+.divLocation{
+    width: 600px;
+    margin-top: 15px;
+    margin-left: 10px;
+    height: 50px;
+}
+
+.divLocaBat{
+    width: 50px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.divLinkProd{
+    text-decoration: none;
+}
+.lblB{
+    background-color: white;
+}
+
+.iptLocation:focus{
+    outline: none;
+    box-shadow: none;
+    border-color: #d4d9de;
+}
+
+.iptLocation{
+    background-color: white !important;
+}
+
+.d1{
+    width: 602px;
+    max-width: none;
+}
+
+#afficherModal{
+    margin-top: 120px;
+    margin-left: 250px;
+}
+
+#afficherModal2{
+    margin-top: 85px;
+    margin-left: -54px;
+    
+}
+
+.d2{
+    width: 581px;
+    max-width: none;
+}
+.divGCal{
+    display: flex;
+}
+
+.btnEnregistrer{
+    background-color: var(--principal);
+    color: white;
+}
+
+.btnEnregistrer:hover{
+    background-color: #045c77;
+    color: white;
+}
+
+.btnReinitialiser{
+    background-color: #dddddd;
+    color: black;
+}
+
+.btnReinitialiser:hover{
+    background-color: #cccccc;
+    color: black;
+}
+
+
+.lblTitreJour{
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 8px;
+}
+
+.lblJourSemaine{
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4px;
+}
+.lblJour{
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4px;
+}
+
+.lblJour2{
+    font-size: 17px;
+    font-weight: 500;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4px;
+}
+
+.lblJourSemaine2{
+    font-size: 17px;
+    font-weight: 600;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4px;
+}
+
+.lblJour:hover{
+    background-color: var(--principal);   
+    color: white;
+}
+
+.lblJour2:hover{
+    background-color: var(--principal);   
+    color: white;
+}
+
+.jour-intermediaire {
+    background-color: var(--bleu-secondaire);
+    color: white;
+}
+
+.survol-jour-intermediaire {
+    background-color: var(--bleu-secondaire);
+    color: white;
+}
+
+.jour-selectionne{
+    background-color: var(--principal);   
+    color: white;
+}
+
+
+.jour-fin{
+    background-color: var(--principal);   
+    color: white;
+}
+
+
+.divCalendrier2{
+    margin-left: 15px;
+}
+
+.moisSuivant{
+    margin-left: 210px;
+}
+
+.moisSuivant2{
+    margin-left: 165px;
+}
+
+.avant-aujourd-hui{
+    text-decoration: line-through;
+    color: #949c9c !important;
+    background-color: #f6f5f0 !important;
+}
+
+.dropdown{
+    margin-top: 15px;
+    margin-left: 22px;
+}
+
+.scdDropdown{
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.dropdown-toggle{
+    background-color: #429FBB !important;
+    color: white !important;
+    height: 50px;
+    font-weight: 600;
+}
+
+.dropdown-toggle:hover{
+    background-color: #2d6c80 !important;
+    color: whitesmoke !important;
+    height: 50px;
+    font-weight: 600;
+}
+
+
+
+.divDropdown{
+    display: flex;
+}
+
+.dropdownPrix{
+    width: 500px;
+    height: 140px;
+}
+
+.lblPrixJour{
+    margin-top: 5px;
+    margin-left: 10px;
+    color: var(--principal);
+    font-weight: 600;
+}
+
+.barre{
+    background-color: var(--bleu-secondaire);
+    color: white;
+    border-radius: 15px;
+    width: 90%;
+    margin-left: 20px;
+    margin-top: 35px;
+    height: 5px;
+    position: relative;
+}
+
+.progressionBarre{
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    
+}
+
+.curseur {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    cursor: ew-resize;
+    border-radius: 50%;
+    border: 1px solid #ccc; 
+    box-shadow: 0 0 2px #cacaca;
+}
+
+.curseurDebut {
+    left: 0;
+    margin-left: 0;
+}
+
+.curseurFin {
+    right: 0;
+    margin-right: 0;
+}
+
+.divPrix {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lblMinP, .lblMaxP {
+    margin-top: 10px;  
+}
+
+.lblMinP {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.lblMaxP{
+    text-align: right;
+    margin-right: 20px;
+}
+
+.blocGauche {
+    left: 0;
+    background-color: #b9b9b9; 
+}
+
+.blocGauche,
+.blocDroite {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 15px;
+}
+
+.blocDroite {
+    right: 0;
+    background-color: #b9b9b9; 
+}
+
+
+.divProd{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.card{
+    width: 350px;
+    height: 452.5px;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 0;
+}
+
+
+
+.card-title{
+    color: #00151c;
+    font-weight: 600;
+}
+
+
+.iconProd{
+    color: var(--principal);
+
+}
+
+.lblProd{
+    color: #424241;
+    font-size: 14px;
+}
+
+.lblPrix{
+    color: var(--principal);
+}
+
+.pPrix{
+    color: var(--principal);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+.card-body{
+    margin-top: 8px;
+    padding-top: 5px;
+    margin-left: 10px;
+}
+
+.card-img-top{
+    height: 342px !important;
+}
+
+.jourLouer {
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+
+/* Contact */
+.divContact{
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 5%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 600px;
+}
+
+.titreContact{
+    font-weight: 600;
+    color: var(--principal);
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Connexion */
+
+.divMail{
+    width: 600px;
+    margin-top: 50px !important;
+    margin: 0 auto;
+}
+
+.lblConnexion{
+    height: 38px;
+    background-color: white;
+    margin-top: 8px;
+}
+
+.divMdp{
+    width: 600px;
+    margin-top: 30px !important;
+    margin: 0 auto;
+    height:30px;
+    margin-bottom: 30px !important;
+}
+
+.inputConnexion{
+    margin-top: 8px;
+    outline: none;
+    box-shadow: none;
+    border-color: #d4d9de;
+}
+
+.divNvlInscription{
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.linkInscription{
+    margin-left: 5px;
+    text-decoration: none;
+    color: var(--principal);
+    font-weight: 600;
+}
+
+.linkInscription:hover {
+    text-decoration: underline;
+}
+
+.divBtnConnexion{
+    margin-bottom: 180px;
+    text-align: center;
+}
+
+.iconConnexion{
+    color: var(--principal);
+    font-size: 18px;
+}
+
+.pNvlInscription{
+    font-size: 15px;
+    color: #424241;
+}
+
+.btnSeConnecter{
+    background-color: var(--principal);
+    border: #024E65 solid 1px;
+    border-radius: 0.5rem;
+    margin-top: 15px;
+    color: white !important;
+    width: 150px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btnSeConnecter:hover {
+    background-color: #045c77;
+    color: whitesmoke;
+    border: #045c77 solid 1px;
+
+}
+
+/* Détail Produit */
+
+.imgDetailProd{
+    width: 640px;
+    height: 428px;
+}
+
+.divImgDetailProd{
+    margin-left: 130px;
+    margin-top: 30px;
+}
+
+.divDetail{
+    display: flex;
+}
+
+.divDetailProd{
+    margin-top: 30px;
+    margin-left: 150px;
+    background-color: var(--bleu-secondaire);
+    padding: 20px;
+    width: 350px;
+    height: 428px;
+    border-radius: 0.5rem;
+}
+
+.titreDtlProd{
+    text-align: center;
+    color: white;
+    font-weight: 600;
+
+}
+
+.divLocationDetail{
+    width: 300px;
+    margin-top: 15px;
+    height: 50px;
+}
+
+.lblDuree{
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+
+.afficherPrixDetail{
+    margin-top: 50px;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: white;
+    width: 300px;
+    height: 50px;
+    border-radius: 0.5rem;
+    color: var(--principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divBtnReserver{
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnReserver{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--principal);
+}
+
+.titreProdDetail, .titreApropos{
+    color: var(--principal);
+    font-weight: 600;
+}
+
+
+.divInfoProd{
+    margin-top: 20px;
+    margin-left: 115px;
+}
+
+.traitSeparation{
+    width: 645px; 
+    border-top: 1px solid #ccc; 
+    margin: 20px 0;
+}
+
+.libelleDetail{
+    width: 650px;
+}
+
+.divCaracteristique{
+    display: flex;
+    margin-top: 10px;
+}
+
+.lblType{
+    color: #424241;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+
+/* Mon Compte */
+
+.divMesLocs{
+    margin-left: 150px;
+}
+
+.titreMesLocs{
+    color: var(--principal);
+    font-weight: 600;
+    margin-top: 60px;
+    margin-left: 10px;
+}
+
+.MesInfos{
+    background-color: #eeeeee;
+    height: 540px;
+    width: 300px;
+}
+
+.divMonCompte{
+    display: flex;
+    margin-bottom: -48px;
+}
+
+.linkInfos{
+    text-decoration: none;
+    color: white;
+    background-color: var(--bleu-secondaire);
+    line-height: 60px;
+    margin-top: 105px ;
+    display: block;
+    height: 60px;
+    font-size: 18px;
+    padding-left: 20px;
+    border-radius: 0.5rem;
+}
+
+.linkInfos2{
+    text-decoration: none;
+    color: white;
+    background-color: var(--bleu-secondaire);
+    line-height: 60px;
+    margin-top: 20px ;
+    display: block;
+    height: 60px;
+    font-size: 18px;
+    padding-left: 20px;
+    border-radius: 0.5rem;
+}
+
+.tableauLoc{
+    border: solid 1px #bbbbbb;
+    width: 800px;
+    border-radius: 0.5rem;
+    height: 200px;
+    margin-top: 25px;
+    margin-bottom: 70px;
+}
+
+.enteteTableau{
+    text-align: center;
+    background-color: var(--bleu-secondaire);
+    color: white;
+    font-size: 18px;
+}
+
+.tdStyle{
+    border-right: #bbbbbb solid 1px;
+}
+
+.vlrTableau{
+    text-align: center;
+}
+
+/*  Recherche */
+.suggestions-liste {
+    list-style-type: none;
+
+}
+
+.suggestion {
+    padding: 8px;
+    cursor: pointer;
+}
+  
+.suggestion:hover {
+    background-color: #f1f1f1;
+}
+
+.recherche{
+    text-decoration: none;
+}
+
+.suggestions-container {
+    position: absolute;
+    width: 570px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: black;
+    margin-top: 50px;
+    margin-left: -600px;
+    z-index: 2;
+}

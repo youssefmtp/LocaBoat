@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ unBateau.nom}} | LocaBoat {% endblock %}
+
+{% block content %}
+
+    <div class="divDetail">
+        <div class="divImgDetailProd">
+            <img class="imgDetailProd" src="{{ asset(unBateau.img) }}" alt="Bateau en mer" />
+        </div>
+
+        <div class="divDetailProd">
+            <h3 class="titreDtlProd"> Réserver </h3>
+
+            <p class="lblDuree">Durée </p>
+            <div class="input-group divLocationDetail">
+                <label for="dateLoc" class="input-group-text lblB">
+                    <i class="fas fa-solid fa-calendar iconBateau"></i>
+                </label>
+                <input type="text" class="form-control iptLocation" name="dateLoc" id="dateLoc" data-bs-toggle="modal" data-bs-target="#afficherModal2" placeholder="Choisir vos dates" readonly/>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal" id="afficherModal2" tabindex="-1" role="dialog" aria-labelledby="afficherModalDate" data-bs-backdrop="false" aria-hidden="true">
+            <div class="modal-dialog d2" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <h5 class="modal-title" id="afficherModalDate"> {{ moisAnnee }} </h5>
+                    <h5 class="modal-title moisSuivant2" id="afficherModalDate"> {{ moisAnneeSuivant }} </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">    
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="divGCal">
+                        <div class="divCalendrier">
+                            <table class="calendrier">
+                                <tr>
+                                    {% for unJ in joursSem %}
+                                        <td class="lblJourSemaine2">
+                                            {{ unJ }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+
+                                {% for i in 0..nbSemaines %}
+                                    <tr>
+                                        {% for key, unJ in joursSem %}
+                                            {% set currentDay = premierJour|date_modify('+' ~ (key + (i * 7)) ~ ' days') %}
+                                            {% set estPremierJour = currentDay|date('m-Y') == premierJour|date('m-Y') %}
+                                            {% set cssClass = (estPremierJour and currentDay|date('d-m-Y') < "now"|date('d-m-Y') ) ? 'avant-aujourd-hui' : '' %}
+                                            <td class="lblJour2  {{ cssClass }}" data-jour="{{ currentDay|date('d-m-Y') }}" data-jourcomparaison="{{ currentDay|date('Y-m-d') }}" data-lesjourlouer="{{ lesLocations|json_encode }}">
+                                                {{ currentDay|date('d') }} 
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                        <div class="divCalendrier2">
+                            <table class="calendrier">
+                                <tr>
+                                    {% for unJ in joursSem %}
+                                        <td class="lblJourSemaine2">
+                                            {{ unJ }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+
+                                {% for i in 0..nbSemaines %}
+                                    <tr>
+                                        {% for key, unJ in joursSem %}
+                                            {% set currentDay = premierJourSuivant|date_modify('+' ~ (key + (i * 7)) ~ ' days') %}
+                                            
+                                            <td class="lblJour2" data-jour="{{ currentDay|date('d-m-Y') }}">
+                                                {{ currentDay|date('d') }}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+                </div>
+            </div>
+            </div>
+
+            
+            <p class="afficherPrixDetail" data-prix=" {{ unBateau.prixJour }}"> Total : {{ unBateau.prixJour }} € </p>
+
+            {% if app.user != null%}
+                <div class="divBtnReserver">
+                    <a href="#" class="btnReserver" onclick="reserverLocation( {{ app.user.id }}, {{ unBateau.id }} )"> Réserver </a>
+                </div>
+            {% else %}
+                <div class="divBtnReserver">
+                    <a href="/connexion" class="btnReserver"> Réserver </a>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div class="container divInfoProd">
+        <h3 class="titreProdDetail"> {{ unBateau.nom}} </h3>
+        <div class="divCaracteristique">
+            <p class="lblProd"> <i class="fas fa-light fa-location-dot iconProd"></i> {{unBateau.ville ~ ', ' ~  unBateau.pays }}</p>
+            <p class="lblType"> <i class="fas fa-light fa-anchor iconProd"></i> {{ libelleTypeBateau }}</p>
+        </div>
+        <!-- Trait de séparation -->
+        <div class="traitSeparation"></div>
+
+        <h5 class="titreApropos"> À propos de {{ unBateau.nom }} </h5>
+        <p class="libelleDetail">{{ unBateau.description }}</p>
+    </div>
+
+    
+<script src="{{ asset('assets/js/calendrier.js') }}"></script>
+<script src="{{ asset('assets/js/location.js') }}"></script>
+
+{% endblock %}
